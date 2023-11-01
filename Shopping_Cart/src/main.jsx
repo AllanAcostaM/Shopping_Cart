@@ -9,6 +9,8 @@ import { store } from "./store";
 // App
 import App from "./App.jsx";
 
+import "./styles/styles.scss";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
