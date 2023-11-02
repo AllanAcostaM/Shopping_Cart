@@ -1,16 +1,6 @@
 @use "../variables" as v;
 
-header {
-  background-color: rgb(103, 103, 224);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  h1 {
-    color: white;
-    font-family: v.$font-family;
-    font-weight: 700;
-  }
+@mixin cart_icon() {
   .amount_container {
     .cart_icon {
       font-size: 2rem;
