@@ -6,7 +6,7 @@ const initialState = {
       id: "1",
       title: "Apple iPhone 15 Pro Max",
       price: 20,
-      img: "https://fdn.gsmarena.com/imgroot/reviews/23/oppo-find-n3-flip/-728x314/gsmarena_002.jpg",
+      img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg",
       amount: 1,
     },
     {
@@ -31,8 +31,8 @@ const initialState = {
       amount: 1,
     },
   ],
-  amount: 0,
-  total: 0,
+  amount: 4,
+  total: 1000,
 };
 
 // Crea un nuevo Slice(caracteristica)

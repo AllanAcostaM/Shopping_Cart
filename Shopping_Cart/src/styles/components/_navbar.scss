@@ -2,7 +2,7 @@
 @use "cart_icon" as ci;
 
 header {
-  background-color: rgb(103, 103, 224);
+  background-color: v.$header_bg_color;
   display: flex;
   justify-content: space-between;
   align-items: center;
