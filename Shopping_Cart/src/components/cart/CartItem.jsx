@@ -4,10 +4,23 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../../features/cart/cartSlice";
 import { increaseItemAmount } from "../../features/cart/cartSlice";
+import { decreaseItemAmount } from "../../features/cart/cartSlice";
 
 const CartItem = ({ id, title, price, img, amount }) => {
   // Obtiene el dispatch
   const dispatch = useDispatch();
+
+  const decreaseItem = () => {
+    if (amount === 1) {
+      // Elimina el item del carrito
+      dispatch(removeItem(id));
+
+      return;
+    }
+
+    // Reduce la cantidad del item del carrito
+    dispatch(decreaseItemAmount(id));
+  };
 
   return (
     <article key={id} className="cart_item">
@@ -30,7 +43,10 @@ const CartItem = ({ id, title, price, img, amount }) => {
           <FaChevronUp />
         </button>
         <p className="cart_item__amount_btn_text">{amount}</p>
-        <button className="cart_item__amount_btn">
+        <button
+          className="cart_item__amount_btn"
+          onClick={() => decreaseItem()}
+        >
           <FaChevronDown />
         </button>
       </div>

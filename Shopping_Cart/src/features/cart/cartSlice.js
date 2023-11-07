@@ -28,9 +28,18 @@ const cartSlice = createSlice({
       // Incrementa la cantidad del item
       cartItem.amount++;
     },
+    decreaseItemAmount: (state, { payload }) => {
+      // Busca el elemento dado su id
+      const cartItem = state.cartItems.find((item) => item.id >= payload);
+      // Decrementa la cantidad del item
+      if (cartItem.amount > 0) {
+        cartItem.amount--;
+      }
+    },
   },
 });
 
-export const { clearCard, removeItem, increaseItemAmount } = cartSlice.actions;
+export const { clearCard, removeItem, increaseItemAmount, decreaseItemAmount } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
