@@ -3,6 +3,7 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import { useDispatch } from "react-redux";
 import { removeItem } from "../../features/cart/cartSlice";
+import { increaseItemAmount } from "../../features/cart/cartSlice";
 
 const CartItem = ({ id, title, price, img, amount }) => {
   // Obtiene el dispatch
@@ -22,7 +23,10 @@ const CartItem = ({ id, title, price, img, amount }) => {
         </button>
       </div>
       <div>
-        <button className="cart_item__amount_btn">
+        <button
+          className="cart_item__amount_btn"
+          onClick={() => dispatch(increaseItemAmount(id))}
+        >
           <FaChevronUp />
         </button>
         <p className="cart_item__amount_btn_text">{amount}</p>

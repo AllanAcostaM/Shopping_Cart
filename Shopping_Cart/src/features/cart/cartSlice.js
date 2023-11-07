@@ -22,9 +22,15 @@ const cartSlice = createSlice({
       // Elimina el item dado su id
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
     },
+    increaseItemAmount: (state, { payload }) => {
+      // Busca el elemento dado su id
+      const cartItem = state.cartItems.find((item) => item.id === payload);
+      // Incrementa la cantidad del item
+      cartItem.amount++;
+    },
   },
 });
 
-export const { clearCard, removeItem } = cartSlice.actions;
+export const { clearCard, removeItem, increaseItemAmount } = cartSlice.actions;
 
 export default cartSlice.reducer;
