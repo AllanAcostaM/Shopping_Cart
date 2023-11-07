@@ -4,7 +4,7 @@ const cartItems = [
     title: "Apple iPhone 15 Pro Max",
     price: 20,
     img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg",
-    amount: 1,
+    amount: 2,
   },
   {
     id: "2",
