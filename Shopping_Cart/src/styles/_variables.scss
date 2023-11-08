@@ -11,3 +11,11 @@ $remove_btn: rgb(68, 68, 68);
 $item_title_color: rgb(53, 53, 53);
 $clear_btn_border_color: rgb(71, 4, 158);
 $clear_btn_bg_color: rgba(92, 32, 231, 0.6);
+
+// Modal
+$modal-backdrop: rgba(0, 0, 0, 0.8);
+$modal-bg: #fff;
+$modal-btn-confirm-color: rgba(113, 65, 226, 0.6);
+$modal-btn-confirm-bg: mix($modal-btn-confirm-color, #fff, 10%);
+$modal-btn-cancel-color: #3fa1fd;
+$modal-btn-cancel-bg: mix($modal-btn-cancel-color, #fff, 10%);
