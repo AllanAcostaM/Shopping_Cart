@@ -1,11 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
-import cartItems from "../../data/cartData";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+// import cartItems from "../../data/cartData";
 
 const initialState = {
-  cartItems,
+  cartItems: [],
   amount: 0,
   total: 0,
+  isLoading: true,
 };
+
+const url = "http://localhost:3000/items";
+
+// Middleware
+// Etsados de la peticion asincrona (promises)
+// 1. Pending
+// 2. Fullfulled (exito)
+// 3. Rejected (error)
+export const getCartItems = createAsyncThunk("cart/getCartItems", async () => {
+  try {
+    const result = await axios.get(url);
+    return result.data;
+  } catch (error) {
+    return [];
+  }
+});
 
 // Crea un nuevo Slice(caracteristica)
 const cartSlice = createSlice({
@@ -48,6 +67,24 @@ const cartSlice = createSlice({
       state.amount = amount;
       state.total = total;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      // Peticion pediente
+      .addCase(getCartItems.pending, (state) => {
+        state.isLoading = true;
+      })
+      // Peticion exitosa
+      .addCase(getCartItems.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        // Modifica el estado
+        // payload = datos obtenidos del backend
+        state.cartItems = payload;
+      })
+      // Peticion fallida
+      .addCase(getCartItems.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 

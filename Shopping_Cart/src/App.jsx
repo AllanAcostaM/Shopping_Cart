@@ -2,16 +2,17 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // Store
-import { calculateTotals } from "./features/cart/cartSlice";
+import { calculateTotals, getCartItems } from "./features/cart/cartSlice";
 
 // Componentes
 import CartContainer from "./components/cart/CartContainer";
 import Modal from "./components/Modal";
 import NavBar from "./components/navbar/NavBar";
+import Loading from "./components/Loading";
 
 const App = () => {
   // Obtiene los datos de store del cart
-  const cartItems = useSelector((store) => store.cart);
+  const { cartItems, isLoading } = useSelector((store) => store.cart);
   // Obtiene los datos de store del modal
   const { isOpen } = useSelector((store) => store.modal);
   // Ejecuta un action para modificar el state
@@ -21,6 +22,13 @@ const App = () => {
   useEffect(() => {
     dispatch(calculateTotals());
   }, [cartItems, dispatch]);
+
+  // useEffect se ejecuta al iniciar la aplicacion
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, [dispatch]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <>
